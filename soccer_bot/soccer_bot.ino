@@ -4,12 +4,19 @@ bool falling_edge = 1;
 bool rising_edge = 1;
 
 //define Analog input pins for the        receiver
-const int speedInputUp = A4;
-const int speedInputDown = A5;
-const int rightWheelInputUp = A0;
-const int rightWheelInputDown = A1;
-const int leftWheelInputUp = A2;
-const int leftWheelInputDown = A3;
+//const int speedInputUp = A4;
+//const int speedInputDown = A5;
+//const int rightWheelInputUp = A0;
+//const int rightWheelInputDown = A1;
+//const int leftWheelInputUp = A2;
+//const int leftWheelInputDown = A3;
+
+const int speedInputUp = A1;
+const int speedInputDown = A0;
+const int rightWheelInputUp = A2;
+const int rightWheelInputDown = A3;
+const int leftWheelInputUp = A5;
+const int leftWheelInputDown = A4;
 
 //define output pins to right motor
 const int motorSpeedPinR = 5;
@@ -54,8 +61,9 @@ void setup() {
   pinMode(motorBackwardPinL, OUTPUT);
   
   
-  pinMode(8, OUTPUT);
-  pinMode(9, OUTPUT);
+  pinMode(redPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
 
   Serial.begin(9600);
 }
@@ -148,20 +156,27 @@ int speedControl()  {
   motorSpeedValR = map(duty_cycle, 0, 100, 100, 255);
 
   //Light up LED color based on current motor speed
-  switch (duty_cycle)   {
-    case 30:
+  if (duty_cycle <= 30){
     digitalWrite(redPin, HIGH);
     digitalWrite(greenPin, LOW);
     digitalWrite(bluePin, LOW);
-    case 60:
-    digitalWrite(redPin, HIGH);
-    digitalWrite(greenPin, HIGH);
-    digitalWrite(bluePin, LOW);
-    case 100:
+  }
+  else if (duty_cycle <=60){
     digitalWrite(redPin, LOW);
     digitalWrite(greenPin, LOW);
-    digitalWrite(bluePin, HIGH);    
+    digitalWrite(bluePin, HIGH);
   }
+  else if (duty_cycle <=90){
+    digitalWrite(redPin, LOW);
+    digitalWrite(greenPin, HIGH);
+    digitalWrite(bluePin, LOW);  
+  }
+  else {
+    digitalWrite(redPin, HIGH);
+    digitalWrite(greenPin, HIGH);
+    digitalWrite(bluePin, HIGH);  
+  }
+//    Serial.println("No change");  
 }
 
 
