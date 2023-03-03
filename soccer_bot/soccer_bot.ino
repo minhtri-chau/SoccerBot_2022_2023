@@ -146,6 +146,22 @@ int speedControl()  {
   //Assign speed value based on duty cycle
   motorSpeedValL = map(duty_cycle, 0, 100, 100, 255);
   motorSpeedValR = map(duty_cycle, 0, 100, 100, 255);
+
+  //Light up LED color based on current motor speed
+  switch (duty_cycle)   {
+    case 30:
+    digitalWrite(redPin, HIGH);
+    digitalWrite(greenPin, LOW);
+    digitalWrite(bluePin, LOW);
+    case 60:
+    digitalWrite(redPin, HIGH);
+    digitalWrite(greenPin, HIGH);
+    digitalWrite(bluePin, LOW);
+    case 100:
+    digitalWrite(redPin, LOW);
+    digitalWrite(greenPin, LOW);
+    digitalWrite(bluePin, HIGH);    
+  }
 }
 
 
