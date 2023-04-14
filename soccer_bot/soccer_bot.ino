@@ -20,7 +20,7 @@ const int leftWheelInputDown = A4;
 
 //define output pins to right motor
 const int motorSpeedPinR = 5;
-const int motorForwardPinR = 8; //used to be 8
+const int motorForwardPinR = 2; //used to be 8
 const int motorBackwardPinR = 7;
 
 //define output pins to left motor
