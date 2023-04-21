@@ -4,12 +4,6 @@ bool falling_edge = 1;
 bool rising_edge = 1;
 
 //define Analog input pins for the receiver
-//const int speedInputUp = A4;
-//const int speedInputDown = A5;
-//const int rightWheelInputUp = A0;
-//const int rightWheelInputDown = A1;
-//const int leftWheelInputUp = A2;
-//const int leftWheelInputDown = A3;
 
 const int speedInputUp = A1;
 const int speedInputDown = A0;
@@ -117,7 +111,7 @@ int speedControl()  {
   if (digitalRead(speedInputUp)) {
     if (rising_edge == 1) {
       rising_edge = 0;
-      digitalWrite(8, HIGH);
+//      digitalWrite(8, HIGH);
       Serial.println("UP");
       if (duty_cycle >= 100) {
         duty_cycle = 100;
@@ -129,14 +123,14 @@ int speedControl()  {
   }
   else {
     rising_edge = 1;
-    digitalWrite(8, LOW);
+//    digitalWrite(8, LOW);
   }
 
 
   if (digitalRead(speedInputDown)) {
     if (falling_edge == 1) {
       falling_edge = 0;
-      digitalWrite(9, HIGH);
+//      digitalWrite(9, HIGH);
       Serial.println("DOWN");
       if (duty_cycle <= 0) {
         duty_cycle = 0;
@@ -148,7 +142,7 @@ int speedControl()  {
   }
   else {
     falling_edge = 1;
-    digitalWrite(9, LOW);
+//    digitalWrite(9, LOW);
   }
 
   //Assign speed value based on duty cycle
