@@ -3,7 +3,7 @@ int duty_cycle = 100;
 bool falling_edge = 1;
 bool rising_edge = 1;
 
-//define Analog input pins for the        receiver
+//define Analog input pins for the receiver
 //const int speedInputUp = A4;
 //const int speedInputDown = A5;
 //const int rightWheelInputUp = A0;
